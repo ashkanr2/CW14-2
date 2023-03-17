@@ -1,0 +1,68 @@
+﻿@model CW14_1.Models.ViewModels.CompleteOrderViewModel
+@{
+}
+
+<html lang="fa" dir="rtl">
+
+<form method="post">
+    <div class="container py-5 h-100 mt-3">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card ">
+                    <div class="card-body p-5 text-center">
+
+
+
+                        <div class=" mb-4">
+                            <label asp-for="CartNumber"> </label>
+                            <input type="text" asp-for="CartNumber"  required="required" />
+                            <span asp-validation-for="CartNumber"></span>
+                        
+                        </div>
+                        <div>
+                            <label asp-for="Price"> </label>
+                            <input type="text" asp-for="Price"  required="required" />
+                            <span asp-validation-for="Price"></span>
+                        </div>
+                        <div>
+                           
+                            <input type="number" name="generalcapchaCode" hidden  value="@ViewBag.RandomNumber" required="required" />
+                         
+                        </div>
+                        <div>
+                            <label asp-for="cvv2"> </label>
+                            <input type="text" asp-for="cvv2" required="required" />
+                            <span asp-validation-for="cvv2"></span>
+                        </div>
+                        <div>
+                            <label asp-for="cvv2Cheker"> </label>
+                            <input type="text" asp-for="cvv2Cheker" required="required" />
+                            <span asp-validation-for="cvv2Cheker"></span>
+                        </div>
+                        <div>
+                            <label asp-for="CapchaCode"></label>
+                            <span>@ViewBag.RandomNumber</span>
+                            <input type="text" asp-for="CapchaCode"  required="required"/>
+                                <span asp-validation-for="Price"></span>
+                          
+                            </div>
+                    </div>
+                       <div>
+                        @if (ViewBag.Input != null)
+                        {
+                            <h3 class="text-danger">@ViewBag.Input</h3>
+                        }
+                    </div>
+                    <button class="btn btn-warning btn-lg" asp-controller="Payment" asp-action="CompleteOrder">تایید </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}
+
